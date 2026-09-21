@@ -1,0 +1,1570 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Housing Security Project</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --light-bg: #FDFAF6; /* Cream */
+            --main-color: #2F5233; /* Forest Green */
+            --main-dark: #1A2421; /* Dark Olive */
+            --main-light: #B1D8B7; /* Sage Green */
+            --accent-color: #F3CA40; /* Warm Gold */
+            --text-dark: #1A2421; /* Dark Olive used for text */
+            --text-light: #ffffff;
+            --font-display: 'Fredoka', sans-serif;
+            --font-body: 'Poppins', sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-body);
+            color: var(--text-dark);
+            background-color: var(--light-bg);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: #f7f3ec; /* Slightly darker cream for header */
+            padding: 15px 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-right: 40px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .logo-text {
+            font-family: var(--font-display);
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--main-color);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--main-dark);
+            font-weight: 600;
+            font-size: 15px;
+            padding: 8px 16px;
+            border-radius: 20px;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        nav a:hover, nav a.active {
+            background-color: var(--main-color);
+            color: white;
+        }
+
+        /* Dropdown Styles */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: white;
+            min-width: 200px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.1);
+            z-index: 1001;
+            border-radius: 15px;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            overflow: hidden;
+            margin-top: 5px;
+        }
+
+        .dropdown-content a {
+            color: var(--main-dark);
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            text-align: center;
+            border-radius: 0;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropdown-content a:hover {
+            background-color: var(--main-light);
+            color: var(--main-dark);
+        }
+
+        .page-section {
+            display: none;
+            animation: fadeIn 0.4s ease-in-out;
+        }
+        .page-section.active {
+            display: block;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .pill-btn {
+            display: inline-block;
+            background: var(--accent-color);
+            color: var(--main-dark);
+            text-decoration: none;
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(243, 202, 64, 0.4);
+            transition: transform 0.2s, background 0.3s;
+            font-family: var(--font-display);
+        }
+
+        .pill-btn:hover {
+            transform: translateY(-2px);
+            background: #e5b92b;
+        }
+
+        .pill-btn-alt {
+            background: var(--main-color);
+            color: white;
+            box-shadow: 0 4px 15px rgba(47, 82, 51, 0.4);
+        }
+        .pill-btn-alt:hover {
+            background: var(--main-dark);
+        }
+
+        .page-header {
+            background-color: var(--main-color);
+            padding: 60px 20px;
+            text-align: center;
+            color: white;
+        }
+        .page-header h1 {
+            font-family: var(--font-display);
+            font-size: 48px;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 0px rgba(0,0,0,0.1);
+        }
+        .page-header p {
+            font-size: 18px;
+            font-weight: 500;
+            opacity: 0.9;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+        .content-card {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+        .content-card h2 {
+            font-family: var(--font-display);
+            color: var(--main-color);
+            font-size: 32px;
+            margin-bottom: 20px;
+        }
+        .content-card p {
+            margin-bottom: 15px;
+            font-size: 16px;
+        }
+
+        /* Hero Section - Slideshow & Layout */
+        .hero {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            min-height: calc(100vh - 140px); 
+            padding: 80px 20px;
+            overflow: hidden;
+            background-color: var(--light-bg);
+        }
+        
+        .hero-slideshow {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            z-index: 0;
+        }
+        .hero-slide {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-size: cover;
+            background-position: center;
+            opacity: 0;
+            transition: opacity 1.5s ease-in-out;
+        }
+        .hero-slide.active {
+            opacity: 1;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(to right, rgba(253, 250, 246, 0.95) 0%, rgba(253, 250, 246, 0.7) 45%, rgba(253, 250, 246, 0.1) 100%);
+            z-index: 1;
+        }
+
+        .hero-inner {
+            width: 100%;
+            max-width: 1200px;
+            display: flex;
+            justify-content: flex-start;
+            position: relative;
+            z-index: 2; 
+        }
+        .hero-content {
+            flex: 1;
+            max-width: 700px;
+            padding-right: 20px;
+        }
+        .hero-acronym {
+            font-family: var(--font-display);
+            font-size: 72px; 
+            line-height: 1.1;
+            color: var(--main-color);
+            margin-bottom: 20px;
+            letter-spacing: 1px;
+            text-shadow: 2px 2px 10px rgba(255,255,255,0.8);
+        }
+        .hero-acronym span {
+            font-size: 92px; 
+            color: var(--main-dark);
+        }
+        .hero-mission {
+            font-size: 24px; 
+            color: var(--main-dark);
+            font-weight: 600;
+            margin-bottom: 15px;
+            max-width: 550px;
+            line-height: 1.5;
+            text-shadow: 1px 1px 5px rgba(255,255,255,0.8);
+        }
+        .hero-quote {
+            font-family: var(--font-display);
+            font-size: 22px;
+            color: var(--main-color);
+            margin-bottom: 30px;
+            font-style: italic;
+        }
+
+        /* The Problem Section */
+        .problem-section {
+            background-color: var(--light-bg);
+            padding: 40px 20px 80px;
+            text-align: center;
+        }
+        .problem-section .section-title {
+            color: var(--main-color);
+            margin-bottom: 20px;
+            font-family: var(--font-display);
+            font-size: 48px;
+            text-shadow: 2px 2px 0px rgba(47, 82, 51, 0.1);
+        }
+        .problem-intro {
+            max-width: 850px;
+            margin: 0 auto 60px auto;
+            font-size: 18px;
+            font-weight: 500;
+            color: var(--main-dark);
+            line-height: 1.6;
+        }
+        .problem-grid {
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            max-width: 1100px;
+            margin: 0 auto;
+            flex-wrap: wrap;
+        }
+        .problem-column {
+            flex: 1;
+            min-width: 280px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        .problem-graphic {
+            margin-bottom: 20px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+        }
+        .people-row {
+            display: flex;
+            gap: 6px;
+            flex-wrap: wrap;
+            justify-content: center;
+            max-width: 250px;
+        }
+        .people-row svg {
+            width: 35px;
+            height: 35px;
+        }
+        .problem-big-text {
+            font-family: var(--font-display);
+            font-size: 48px;
+            color: var(--main-color);
+            line-height: 1.1;
+            margin-bottom: 10px;
+        }
+        .problem-desc {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--main-dark);
+            line-height: 1.4;
+            margin-bottom: 10px;
+        }
+        .chart-icon {
+            width: 120px;
+            height: 80px;
+            fill: var(--main-light);
+        }
+        .chart-arrow {
+            stroke: var(--accent-color);
+            stroke-width: 5;
+            fill: none;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+        .stat-right-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+        .stat-right-header .problem-big-text {
+            margin-bottom: 0;
+            font-size: 54px;
+        }
+
+        .wave-container {
+            width: 100%;
+            overflow: hidden;
+            line-height: 0;
+        }
+        .wave-container svg {
+            display: block;
+            width: 100%;
+            height: 100px;
+        }
+
+        /* Who We Are Section Layout */
+        .who-we-are {
+            background-color: var(--main-color);
+            padding: 80px 20px 100px;
+        }
+        .who-we-are-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 60px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        .who-we-are-text {
+            flex: 1;
+            text-align: left;
+        }
+        .who-we-are-text h2 {
+            font-family: var(--font-display);
+            color: var(--accent-color);
+            font-size: 48px;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 0px rgba(0,0,0,0.2);
+        }
+        .who-we-are-text p {
+            font-size: 16px;
+            color: white;
+            line-height: 1.7;
+            margin-bottom: 30px;
+            font-weight: 400;
+        }
+        .who-we-are-image {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+        }
+        .who-we-are-image img {
+            width: 100%;
+            max-width: 550px;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            object-fit: cover;
+        }
+
+        /* The Approach Section */
+        .approach {
+            background-color: var(--light-bg);
+            padding: 80px 20px;
+            text-align: center;
+        }
+        .section-title {
+            font-family: var(--font-display);
+            color: var(--main-color);
+            font-size: 48px;
+            margin-bottom: 50px;
+            text-shadow: 2px 2px 0px rgba(47, 82, 51, 0.1);
+        }
+        .approach-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .approach-banner {
+            background-color: var(--main-light);
+            padding: 35px 45px;
+            border-radius: 25px;
+            color: var(--main-dark);
+            box-shadow: 0 10px 20px rgba(177, 216, 183, 0.4);
+            text-align: left;
+        }
+        .approach-banner h3 {
+            font-family: var(--font-display);
+            font-size: 28px;
+            margin-bottom: 15px;
+            color: var(--main-dark);
+        }
+        .approach-banner p {
+            font-weight: 500;
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        /* Get Involved 3-column Grid (Homepage) */
+        .get-involved {
+            background-color: var(--main-color);
+            padding: 80px 20px;
+            text-align: center;
+            color: white;
+        }
+        .get-involved .section-title {
+            color: white;
+            text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.1);
+        }
+        .involved-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr); /* Forces 3 columns */
+            gap: 30px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .involved-card {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            height: 350px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+        .involved-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        .card-overlay {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(26, 36, 33, 0.6);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            text-align: center;
+        }
+        .card-overlay h3 {
+            font-family: var(--font-display);
+            font-size: 32px;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            text-shadow: 1px 1px 5px rgba(0,0,0,0.5);
+            color: white;
+        }
+        
+        /* About Us - Zigzag Layout */
+        .zigzag-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 80px 20px;
+        }
+        .zigzag-row {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+            margin-bottom: 80px;
+        }
+        .zigzag-row:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+        .zigzag-text {
+            flex: 1;
+        }
+        .zigzag-text h2 {
+            font-family: var(--font-display);
+            color: var(--main-dark);
+            font-size: 40px;
+            margin-bottom: 15px;
+        }
+        .zigzag-text p {
+            font-size: 16px;
+            color: var(--main-dark);
+            line-height: 1.7;
+        }
+        .zigzag-image {
+            flex: 1;
+        }
+        .zigzag-image img {
+            width: 100%;
+            border-radius: 15px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            object-fit: cover;
+        }
+
+        /* About Us - Quotes Section */
+        .quotes-section {
+            background: url('https://images.unsplash.com/photo-1559027615-cd4628902d4a?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+            padding: 100px 20px;
+            display: flex;
+            justify-content: center;
+            align-items: stretch;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+        .quote-box {
+            background: rgba(26, 36, 33, 0.75);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 50px 40px;
+            border-radius: 20px;
+            max-width: 500px;
+            flex: 1;
+            min-width: 300px;
+            text-align: center;
+            color: white;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .quote-box p {
+            font-size: 18px;
+            font-weight: 500;
+            font-style: italic;
+            margin-bottom: 25px;
+            line-height: 1.6;
+        }
+        .quote-box span {
+            font-size: 16px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--accent-color);
+        }
+
+        /* Get Involved - Layout Styles */
+        .why-involved-container {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+            max-width: 1100px;
+            margin: 80px auto;
+            padding: 0 20px;
+        }
+        .why-involved-text {
+            flex: 1;
+        }
+        .why-involved-text h2 {
+            font-family: var(--font-display);
+            color: var(--main-color);
+            font-size: 42px;
+            margin-bottom: 20px;
+        }
+        .why-involved-text p {
+            font-size: 16px;
+            line-height: 1.7;
+            margin-bottom: 20px;
+            color: var(--main-dark);
+        }
+        .why-involved-approaches {
+            flex: 1;
+            background: rgba(26, 36, 33, 0.85); 
+            border-radius: 20px;
+            padding: 50px 40px;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center; 
+            text-align: center; 
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+        }
+        .why-involved-approaches h3 {
+            font-family: var(--font-display);
+            color: var(--accent-color);
+            font-size: 32px;
+            margin-bottom: 25px;
+        }
+        .approach-list-item {
+            margin-bottom: 15px;
+        }
+        .approach-list-item h4 {
+            font-size: 20px;
+            color: white;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+
+        /* Bordered Program Cards - Get Involved */
+        .programs-outline-container {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            max-width: 900px;
+            margin: 0 auto 80px;
+            padding: 0 20px;
+            flex-wrap: wrap;
+        }
+        .program-card-outline {
+            flex: 1;
+            min-width: 280px;
+            background: white;
+            border: 2px solid;
+            padding: 50px 30px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            border-radius: 4px;
+        }
+        .program-card-outline.chapter-card {
+            border-color: var(--accent-color);
+        }
+        .program-card-outline.volunteer-card {
+            border-color: var(--main-color);
+        }
+        .program-card-outline h3 {
+            font-family: var(--font-display);
+            font-size: 32px;
+            margin-bottom: 20px;
+        }
+        .program-card-outline.chapter-card h3 {
+            color: var(--accent-color);
+        }
+        .program-card-outline.volunteer-card h3 {
+            color: var(--main-color);
+        }
+        .program-card-outline p {
+            font-size: 16px;
+            color: var(--main-dark);
+            margin-bottom: 30px;
+            line-height: 1.6;
+            flex-grow: 1;
+        }
+        .program-card-outline .pill-btn {
+            margin-top: auto;
+            border: none;
+        }
+        .btn-chapter {
+            background: var(--accent-color);
+            color: var(--main-dark);
+        }
+        .btn-chapter:hover {
+            background: #e5b92b;
+        }
+        .btn-volunteer {
+            background: var(--main-color);
+            color: white;
+        }
+        .btn-volunteer:hover {
+            background: var(--main-dark);
+        }
+
+        /* Full Width Join Section */
+        .join-hsp-section {
+            background: url('https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+            padding: 140px 20px;
+            text-align: center;
+            position: relative;
+            margin-top: 40px;
+        }
+        .join-hsp-overlay {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(26, 36, 33, 0.75);
+        }
+        .join-hsp-content {
+            position: relative;
+            z-index: 2;
+        }
+        .join-hsp-content h2 {
+            font-family: var(--font-display);
+            font-size: 42px; 
+            color: white;
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
+            font-style: italic;
+        }
+
+        /* --- Chapters Page Specific Styles (Grid Layout) --- */
+        .chapters-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            max-width: 1100px;
+            margin: 60px auto 80px;
+            padding: 0 20px;
+        }
+        .chapters-grid-item {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .chapters-grid-item img {
+            width: 100%;
+            border-radius: 15px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+        .chapters-grid-item h2 {
+            font-family: var(--font-display);
+            font-size: 32px;
+            margin-bottom: 20px;
+        }
+        .chapters-grid-item p {
+            font-size: 16px;
+            color: var(--main-dark);
+            line-height: 1.7;
+            margin-bottom: 15px;
+        }
+        .chapters-grid-item ul {
+            margin-left: 20px;
+            line-height: 1.7;
+            color: var(--main-dark);
+            font-size: 16px;
+            font-weight: 500;
+        }
+        .chapters-grid-item li {
+            margin-bottom: 10px;
+        }
+        .chapters-btn-group {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .current-chapters-banner {
+            background-color: var(--accent-color);
+            padding: 50px 20px;
+            text-align: center;
+        }
+        .current-chapters-banner h2 {
+            font-family: var(--font-display);
+            color: var(--main-dark);
+            font-size: 40px;
+            margin: 0;
+        }
+
+        /* --- Volunteer Page Specific Styles (Clean Layout) --- */
+        .volunteer-simple-container {
+            max-width: 800px;
+            margin: 80px auto;
+            padding: 0 20px;
+        }
+        .volunteer-simple-container h2.ways-title {
+            font-family: var(--font-display);
+            color: var(--accent-color);
+            font-size: 42px;
+            margin-bottom: 25px;
+        }
+        .volunteer-simple-container p {
+            font-size: 18px;
+            color: var(--main-dark);
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+        .volunteer-simple-container ol {
+            margin-left: 25px;
+            margin-bottom: 40px;
+            font-weight: 600;
+            font-size: 20px;
+            line-height: 2;
+            color: var(--main-dark);
+        }
+        .volunteer-hours {
+            text-align: center;
+            max-width: 800px;
+            margin: 60px auto 100px;
+            padding: 0 20px;
+        }
+        .volunteer-hours h2 {
+            font-family: var(--font-display);
+            font-size: 36px;
+            color: var(--main-dark);
+            margin-bottom: 15px;
+        }
+        .volunteer-hours p {
+            font-size: 18px;
+            color: var(--main-dark);
+            font-weight: 500;
+        }
+
+        /* --- Share Your Story Specific Styles --- */
+        .story-page-container {
+            max-width: 1000px;
+            margin: 60px auto;
+            padding: 0 20px;
+            text-align: center;
+        }
+        .story-desc {
+            font-size: 16px;
+            color: var(--main-dark);
+            line-height: 1.7;
+            margin-bottom: 40px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .story-large-quote {
+            font-family: var(--font-display);
+            font-size: 32px;
+            color: var(--main-color);
+            line-height: 1.4;
+            margin: 0 auto 40px;
+            max-width: 800px;
+            position: relative;
+        }
+        .story-privacy {
+            font-weight: 600;
+            color: var(--main-dark);
+            margin-bottom: 30px;
+        }
+        
+        /* Blog Grid Styling */
+        .stories-section-title {
+            font-family: var(--font-display);
+            font-size: 56px;
+            color: var(--main-dark);
+            margin: 80px 0 40px;
+            text-align: center;
+        }
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            max-width: 1100px;
+            margin: 0 auto 80px auto;
+            text-align: left;
+        }
+        .blog-card {
+            background: white;
+            border: 1px solid #eaeaea;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            display: flex;
+            flex-direction: column;
+        }
+        .blog-card img.blog-img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+        .blog-card-content {
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+        .blog-author-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+        .blog-author-row img {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+        }
+        .blog-author-name {
+            font-size: 14px;
+            color: #555;
+        }
+        .blog-title {
+            font-family: var(--font-display);
+            font-size: 24px;
+            color: var(--main-color);
+            margin-bottom: 15px;
+            line-height: 1.3;
+        }
+        .blog-excerpt {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+        
+        /* Contact Form Base Styles */
+        .story-form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .story-form input, .story-form textarea {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid var(--main-light);
+            border-radius: 12px;
+            font-family: var(--font-body);
+            font-size: 16px;
+            outline: none;
+            transition: border 0.3s;
+        }
+        .story-form input:focus, .story-form textarea:focus {
+            border-color: var(--main-color);
+        }
+        
+        footer {
+            text-align: center;
+            padding: 30px;
+            background-color: var(--main-dark);
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                padding: 40px 20px;
+                min-height: calc(100vh - 140px);
+            }
+            .hero-overlay {
+                background: linear-gradient(to bottom, rgba(253, 250, 246, 0.95) 0%, rgba(253, 250, 246, 0.8) 100%);
+            }
+            .hero-inner {
+                justify-content: center;
+                text-align: center;
+            }
+            .hero-content {
+                padding-right: 0;
+            }
+            .hero-acronym {
+                font-size: 52px;
+            }
+            .hero-acronym span {
+                font-size: 72px;
+            }
+            .hero-mission {
+                margin: 0 auto 20px;
+                font-size: 18px;
+            }
+            header {
+                flex-direction: column;
+            }
+            .logo-container {
+                margin-right: 0;
+                margin-bottom: 15px;
+            }
+            .dropdown-content {
+                position: static;
+                transform: none;
+                box-shadow: none;
+                background-color: #f7f3ec;
+                border: 1px solid var(--main-light);
+            }
+            .stat-right-header {
+                flex-direction: column;
+                gap: 5px;
+            }
+            .who-we-are-container {
+                flex-direction: column;
+                text-align: center;
+                gap: 40px;
+            }
+            .who-we-are-text {
+                text-align: center;
+            }
+            .approach-banner {
+                padding: 25px;
+            }
+            .zigzag-row, .zigzag-row:nth-child(even), .program-row, .program-row:nth-child(even) {
+                flex-direction: column;
+                text-align: center;
+                gap: 30px;
+            }
+            .why-involved-container {
+                flex-direction: column;
+            }
+            .join-hsp-content h2 {
+                font-size: 30px;
+            }
+            .chapters-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            .involved-grid {
+                grid-template-columns: 1fr; /* Stack vertically only on mobile */
+            }
+            .story-large-quote {
+                font-size: 24px;
+                padding: 0 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a class="logo-container" onclick="switchPage('home')">
+            <svg width="45" height="45" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <path d="M10,55 L50,15 L90,55 L80,55 L80,85 L20,85 L20,55 Z" fill="#2F5233" />
+                <path d="M5,60 L50,15 L95,60" fill="none" stroke="#1A2421" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" />
+                <path d="M50,70 C50,70 35,55 35,45 C35,38 41,35 45,35 C48,35 50,38 50,38 C50,38 52,35 55,35 C59,35 65,38 65,45 C65,55 50,70 50,70 Z" fill="#F3CA40" />
+            </svg>
+            <div class="logo-text">HSP</div>
+        </a>
+        <nav>
+            <ul>
+                <li><a id="link-home" class="active" onclick="switchPage('home')">Home</a></li>
+                <li><a id="link-about" onclick="switchPage('about')">About Us</a></li>
+                <li class="dropdown">
+                    <a id="link-involved" onclick="switchPage('involved')">Get Involved ▾</a>
+                    <div class="dropdown-content">
+                        <a id="link-chapters" onclick="switchPage('chapters')">Chapters</a>
+                        <a id="link-volunteer" onclick="switchPage('volunteer')">Volunteer</a>
+                    </div>
+                </li>
+                <li><a id="link-story" onclick="switchPage('story')">Share Your Story</a></li>
+                <li><a id="link-contact" onclick="switchPage('contact')">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div id="page-home" class="page-section active">
+        <!-- Hero Section with Slideshow Background -->
+        <section class="hero">
+            <div class="hero-slideshow">
+                <div class="hero-slide active" style="background-image: url('https://images.unsplash.com/photo-1577896851231-70ef18881754?auto=format&fit=crop&w=1920&q=80')"></div>
+                <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1511632765486-a01980e01a18?auto=format&fit=crop&w=1920&q=80')"></div>
+                <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1920&q=80')"></div>
+            </div>
+            <!-- Gradient Overlay -->
+            <div class="hero-overlay"></div>
+            
+            <div class="hero-inner">
+                <div class="hero-content">
+                    <h1 class="hero-acronym">
+                        <span>H</span>ousing<br>
+                        <span>S</span>ecurity<br>
+                        <span>P</span>roject
+                    </h1>
+                    <p class="hero-mission">Revolutionizing the culture of financial preparedness to build stronger communities and prevent housing insecurity.<!--[cite: 1]--></p>
+                    <p class="hero-quote">"Prepare before the crisis."<!--[cite: 1]--></p>
+                    <button class="pill-btn" onclick="scrollToNextSection()">Learn More &gt;</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- The Problem Section -->
+        <section class="problem-section" id="stats-section">
+            <h2 class="section-title">The Problem</h2>
+            <p class="problem-intro">Housing insecurity affects millions of people across the United States, but it is often treated as a problem that begins only when someone loses their home. In reality, housing insecurity can begin much earlier, when families struggle to afford rent, fall behind on payments, or have little financial room to handle an unexpected expense. Today, too many people are left without the financial security, knowledge, resources, and support needed to remain securely housed.<!--[cite: 1]--></p>
+            
+            <div class="problem-grid">
+                
+                <!-- 8 in 10 Column -->
+                <div class="problem-column">
+                    <div class="problem-graphic">
+                        <div class="people-row">
+                            <svg viewBox="0 0 24 24" fill="var(--accent-color)"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+                            <svg viewBox="0 0 24 24" fill="var(--accent-color)"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+                            <svg viewBox="0 0 24 24" fill="var(--accent-color)"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+                            <svg viewBox="0 0 24 24" fill="var(--accent-color)"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+                            <svg viewBox="0 0 24 24" fill="var(--accent-color)"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+                            <svg viewBox="0 0 24 24" fill="var(--accent-color)"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+                            <svg viewBox="0 0 24 24" fill="var(--accent-color)"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+                            <svg viewBox="0 0 24 24" fill="var(--accent-color)"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+                            <!-- 2 Dark People -->
+                            <svg viewBox="0 0 24 24" fill="var(--main-dark)"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+                            <svg viewBox="0 0 24 24" fill="var(--main-dark)"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+                        </div>
+                    </div>
+                    <div class="problem-big-text">8 in 10</div>
+                    <div class="problem-desc">participants said their eviction filing limited their future housing options.<!--[cite: 1]--></div>
+                </div>
+    
+                <!-- 745,652 Column -->
+                <div class="problem-column">
+                    <div class="problem-graphic">
+                        <svg viewBox="0 0 100 80" class="chart-icon">
+                            <rect x="10" y="50" width="12" height="30" />
+                            <rect x="25" y="40" width="12" height="40" />
+                            <rect x="40" y="60" width="12" height="20" />
+                            <rect x="55" y="30" width="12" height="50" />
+                            <rect x="70" y="10" width="12" height="70" />
+                            <path d="M 5 50 L 30 30 L 45 45 L 85 5" class="chart-arrow" />
+                            <polygon points="85,5 75,5 85,15" fill="var(--accent-color)" />
+                        </svg>
+                    </div>
+                    <div class="problem-desc" style="margin-bottom: 5px;">People experiencing homelessness on a single night in 2025 reached<!--[cite: 1]--></div>
+                    <div class="problem-big-text">745,652</div>
+                </div>
+    
+                <!-- 12.1M Column -->
+                <div class="problem-column">
+                    <div class="stat-right-header">
+                        <div class="problem-big-text">12.1M</div>
+                        <div style="display:flex; gap: 5px; margin-top: 5px;">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="var(--main-light)"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="var(--main-light)"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="var(--accent-color)"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+                        </div>
+                    </div>
+                    <div class="problem-desc" style="margin-top: 10px;">Households spent more than half of their income on housing, leaving little financial room for the unexpected.<!--[cite: 1]--></div>
+                </div>
+            </div>
+        </section>
+
+        <div class="wave-container" style="background: var(--light-bg);">
+            <svg viewBox="0 0 1440 100" preserveAspectRatio="none" style="background: var(--light-bg);">
+                <path fill="#2F5233" d="M0,50 C320,150 420,-50 1440,50 L1440,100 L0,100 Z"></path>
+            </svg>
+        </div>
+
+        <section class="who-we-are">
+            <div class="who-we-are-container">
+                <div class="who-we-are-text">
+                    <h2>Who We Are</h2>
+                    <p>The Housing Security Project is a youth-led organization working to revolutionize the culture of financial preparedness and prevent housing insecurity in communities. Through financial education, community initiatives, volunteer projects, and advocacy, we encourage healthy financial habits, strengthen support systems, and help create communities where people are better prepared for financial hardship before it becomes a housing crisis.<!--[cite: 1]--></p>
+                    <button class="pill-btn" onclick="switchPage('about')">About Us &gt;</button>
+                </div>
+                <div class="who-we-are-image">
+                    <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=800&q=80" alt="Youth leaders at an event">
+                </div>
+            </div>
+        </section>
+
+        <div class="wave-container" style="background: var(--main-color);">
+            <svg viewBox="0 0 1440 100" preserveAspectRatio="none" style="background: var(--main-color);">
+                <path fill="#FDFAF6" d="M0,50 C400,-50 800,150 1440,50 L1440,100 L0,100 Z"></path>
+            </svg>
+        </div>
+
+        <section class="approach">
+            <h2 class="section-title">Our Approach</h2>
+            <div class="approach-stack">
+                <div class="approach-banner">
+                    <h3>01. Build Knowledge</h3>
+                    <p>Through financial literacy programs, educational resources, workshops, and community outreach, we teach young people practical skills in saving, budgeting, spending, credit, debt, emergency planning, and housing. We encourage healthy financial habits that help people prepare for unexpected hardship before it becomes a crisis.<!--[cite: 1]--></p>
+                </div>
+                <div class="approach-banner">
+                    <h3>02. Build Connection</h3>
+                    <p>Through public education, personal stories, community conversations, and awareness initiatives, we encourage people to view saving, planning ahead, and preparing for unexpected hardship as habits worth building rather than actions taken only when a crisis occurs.<!--[cite: 1]--></p>
+                </div>
+                <div class="approach-banner">
+                    <h3>03. Build Action</h3>
+                    <p>Through chapters, volunteer projects, and advocacy, we spread HSP's mission to students and communities, supporting local initiatives and working to develop and pass policies that strengthen housing and financial security.<!--[cite: 1]--></p>
+                </div>
+            </div>
+            <button class="pill-btn" style="margin-top: 40px;" onclick="switchPage('involved')">View Our Programs &gt;</button>
+        </section>
+
+        <!-- Homepage Get Involved Section -->
+        <section class="get-involved" style="margin-top: 20px;">
+            <h2 class="section-title">Get Involved</h2>
+            <div class="involved-grid">
+                <div class="involved-card">
+                    <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=600&q=80" alt="Chapter">
+                    <div class="card-overlay">
+                        <h3>Chapter Program</h3>
+                        <button class="pill-btn" onclick="switchPage('chapters')">Learn More &gt;</button>
+                    </div>
+                </div>
+                <div class="involved-card">
+                    <img src="https://images.unsplash.com/photo-1559027615-cd4628902d4a?auto=format&fit=crop&w=600&q=80" alt="Volunteer">
+                    <div class="card-overlay">
+                        <h3>Volunteer Program</h3>
+                        <button class="pill-btn" onclick="switchPage('volunteer')">Learn More &gt;</button>
+                    </div>
+                </div>
+                <div class="involved-card">
+                    <img src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=600&q=80" alt="Story">
+                    <div class="card-overlay">
+                        <h3>Share Your Story</h3>
+                        <button class="pill-btn" onclick="switchPage('story')">Learn More &gt;</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- About Us Page -->
+    <div id="page-about" class="page-section">
+        <div class="page-header">
+            <h1>About Us</h1>
+            <p>Empowering young people and communities to revolutionize financial preparedness.<!--[cite: 1]--></p>
+        </div>
+        
+        <div class="zigzag-container">
+            <!-- 1. Our Vision -->
+            <div class="zigzag-row">
+                <div class="zigzag-text">
+                    <h2>Our Vision</h2>
+                    <p>A future where financial preparedness is part of everyday life, where people are encouraged to save, plan ahead, and build the financial security needed to withstand unexpected hardship. We want to help create a culture of self-reliance where people are better prepared before a financial crisis becomes a housing crisis, while ensuring that those facing circumstances beyond their control have support when they need it.<!--[cite: 1]--></p>
+                </div>
+                <div class="zigzag-image">
+                    <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=800&q=80" alt="Students collaborating confidently">
+                </div>
+            </div>
+
+            <!-- 2. Our Mission -->
+            <div class="zigzag-row">
+                <div class="zigzag-text">
+                    <h2>Our Mission</h2>
+                    <p>Empowering young people and communities to revolutionize the culture of financial preparedness by building financial security, developing healthy saving habits, and creating support systems that prevent housing insecurity, so no individual or family faces them alone.<!--[cite: 1]--></p>
+                </div>
+                <div class="zigzag-image">
+                    <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=800&q=80" alt="Diverse youth community working together">
+                </div>
+            </div>
+
+            <!-- 3. What We Believe -->
+            <div class="zigzag-row">
+                <div class="zigzag-text">
+                    <h2>What We Believe</h2>
+                    <p>We believe housing security starts before a crisis. Building healthy spending and saving habits, preparing for unexpected expenses, and understanding how to manage money can help people remain financially stable when hardships occur.<!--[cite: 1]--></p>
+                    <p style="margin-top: 15px;">We want to help create a culture where saving and financial preparedness are part of everyday life, not something people think about only after a crisis begins. At the same time, we believe strong community and public support systems are essential for people facing circumstances beyond their control.<!--[cite: 1]--></p>
+                </div>
+                <div class="zigzag-image">
+                    <img src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=800&q=80" alt="Financial planning and saving">
+                </div>
+            </div>
+        </div>
+
+        <div class="quotes-section">
+            <div class="quote-box">
+                <p>“I used to think that financial planning was something I would worry about when I was older. The Housing Security Project helped me understand that the habits I build now can shape my financial security later. Learning how to budget, save, prepare for unexpected expenses, and understand financial choices gave me skills that I can carry into adulthood. Starting early makes financial security feel less like a distant goal and more like something I can actively build.”</p>
+                <span>- Youth Participant</span>
+            </div>
+            <div class="quote-box">
+                <p>“Facing eviction can make you feel like no one is listening. The Housing Security Project helped me understand my options, find resources, and feel like my voice mattered. Knowing that our experiences are also being shared with legislators made me feel like we’re not just dealing with these problems, but we’re also helping create change.”</p>
+                <span>- Community Member</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Get Involved Page -->
+    <div id="page-involved" class="page-section">
+        <div class="page-header">
+            <h1>Get Involved</h1>
+            <p>Join the movement to prevent housing insecurity.<!--[cite: 1]--></p>
+        </div>
+        
+        <div class="why-involved-container">
+            <div class="why-involved-text">
+                <h2>Why Get Involved?</h2>
+                <p>We believe everyone should have an opportunity to contribute to the fight against housing insecurity. Young people have an important role to play in understanding housing insecurity and creating change in their communities.<!--[cite: 1]--></p>
+                <p>Through our programs, HSP members work directly on the policy process from start to finish—drafting legislation, gathering community perspectives, and advocating for proposals to turn student-developed ideas into real policy change.<!--[cite: 1]--></p>
+            </div>
+            <div class="why-involved-approaches">
+                <h3>Our Approach</h3>
+                <div class="approach-list-item">
+                    <h4>1. Build Knowledge</h4>
+                </div>
+                <div class="approach-list-item">
+                    <h4>2. Build Connection</h4>
+                </div>
+                <div class="approach-list-item">
+                    <h4>3. Build Action</h4>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bordered Program Cards -->
+        <div class="programs-outline-container">
+            <div class="program-card-outline chapter-card">
+                <h3>Chapter Program</h3>
+                <p>Start or join a chapter in your school or community to lead educational programs, service projects, and advocacy initiatives!<!--[cite: 1]--></p>
+                <button class="pill-btn btn-chapter" onclick="switchPage('chapters')">Learn More</button>
+            </div>
+            <div class="program-card-outline volunteer-card">
+                <h3>Volunteer Program</h3>
+                <p>Assist us in supporting the fight against housing insecurity through education, research, community service, and outreach!<!--[cite: 1]--></p>
+                <button class="pill-btn btn-volunteer" onclick="switchPage('volunteer')">Volunteer With Us</button>
+            </div>
+        </div>
+
+        <!-- Join HSP Section -->
+        <div class="join-hsp-section">
+            <div class="join-hsp-overlay"></div>
+            <div class="join-hsp-content">
+                <h2>Join the Housing Security Project Today!</h2>
+            </div>
+        </div>
+    </div>
+
+    <!-- CHAPTERS PAGE -->
+    <div id="page-chapters" class="page-section">
+        <div class="page-header">
+            <h1>Chapters</h1>
+            <p>Bring the Housing Security Project to your school or community.<!--[cite: 1]--></p>
+        </div>
+        
+        <div class="chapters-grid">
+            <!-- Quadrant 1: Image -->
+            <div class="chapters-grid-item">
+                <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=600&q=80" alt="Students leading a chapter">
+            </div>
+            
+            <!-- Quadrant 2: What is an HSP Chapter -->
+            <div class="chapters-grid-item">
+                <h2 style="color: var(--main-color);">What is an HSP Chapter?</h2>
+                <p>We believe young people have an important role to play in understanding housing insecurity and creating change in their communities.<!--[cite: 1]--></p>
+                <p>Through our chapter program, we support young people as they lead projects focused on financial education, housing awareness, community support, and advocacy. Our chapters bring HSP's mission into their own communities through educational programs, fundraisers, service projects, and other local initiatives.<!--[cite: 1]--></p>
+            </div>
+            
+            <!-- Quadrant 3: What Chapters Do -->
+            <div class="chapters-grid-item">
+                <h2 style="color: var(--main-color);">Chapter leaders will do:</h2>
+                <ul>
+                    <li>Draft legislation and policy proposals<!--[cite: 1]--></li>
+                    <li>Conduct extensive policy research<!--[cite: 1]--></li>
+                    <li>Gather community perspectives and stories<!--[cite: 1]--></li>
+                    <li>Prepare supporting materials for local governments<!--[cite: 1]--></li>
+                    <li>Connect with policymakers and community organizations<!--[cite: 1]--></li>
+                    <li>Advocate fiercely for our proposals<!--[cite: 1]--></li>
+                </ul>
+            </div>
+            
+            <!-- Quadrant 4: Ready to Start -->
+            <div class="chapters-grid-item">
+                <h2 style="color: var(--accent-color);">Ready to start a chapter?</h2>
+                <p>Before applying to become a Chapter Leader, check out our guide and ensure you are ready to bring the mission of the Housing Security Project to your community!</p>
+                <div class="chapters-btn-group">
+                    <a href="YOUR_GOOGLE_FORM_LINK_HERE" target="_blank" class="pill-btn pill-btn-alt">Start a Chapter</a>
+                    <a href="YOUR_GOOGLE_FORM_LINK_HERE" target="_blank" class="pill-btn">Chapter Guide</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="current-chapters-banner">
+            <h2>Current Chapters</h2>
+            <p style="margin-top: 15px; font-size: 18px; color: var(--main-dark); font-weight: 500;">Our chapter directory is currently being updated. Please check back soon for a full list of our active chapters!</p>
+        </div>
+    </div>
+
+    <!-- VOLUNTEER PAGE -->
+    <div id="page-volunteer" class="page-section">
+        <div class="page-header">
+            <h1>Volunteer</h1>
+            <p>Contribute your skills to support our mission.<!--[cite: 1]--></p>
+        </div>
+        
+        <div class="volunteer-simple-container">
+            <h2 class="ways-title">Ways to Volunteer</h2>
+            <p>We believe everyone should have an opportunity to contribute to the fight against housing insecurity.<!--[cite: 1]--></p>
+            <p>Through our volunteer program, we connect young people with opportunities to support The Housing Security Project through education, research, community service, fundraising, outreach, and advocacy.<!--[cite: 1]--></p>
+            
+            <p style="margin-top: 30px; font-weight: 600; font-size: 20px;">The main ways to volunteer with HSP are:</p>
+            <ol>
+                <li>Start or join an existing chapter</li>
+                <li>Apply to be on the HSP team!</li>
+            </ol>
+
+            <a href="YOUR_GOOGLE_FORM_LINK_HERE" target="_blank" class="pill-btn pill-btn-alt">Volunteer Application</a>
+        </div>
+
+        <div class="volunteer-hours">
+            <h2>Volunteer Hours</h2>
+            <p>Volunteer hours can be approved upon providing an accurate record to the HSP team or to Chapter Leadership.</p>
+        </div>
+    </div>
+
+    <!-- SHARE YOUR STORY PAGE -->
+    <div id="page-story" class="page-section">
+        <div class="page-header">
+            <h1>Share Your Story</h1>
+            <p>Every story deserves to be heard.<!--[cite: 1]--></p>
+        </div>
+        
+        <div class="story-page-container">
+            <div class="story-large-quote">
+                "By sharing these stories, we work to reduce stigma, build understanding, and remind communities that housing insecurity can affect anyone."<!--[cite: 1]-->
+            </div>
+            <p class="story-desc">We believe that behind every experience with housing insecurity is a person and a story that deserves to be heard. Through HSP, we invite individuals and families affected by housing insecurity, eviction, or financial hardship to share their experiences and help others better understand the realities behind these issues.<!--[cite: 1]--></p>
+            
+            <p class="story-privacy">We respect the privacy of everyone who shares their story with us. Stories may be shared anonymously, and we will not publicly identify or share personal information without permission.<!--[cite: 1]--></p>
+
+            <a href="YOUR_GOOGLE_FORM_LINK_HERE" target="_blank" class="pill-btn pill-btn-alt" style="margin-bottom: 60px; font-size: 18px; padding: 15px 40px;">Submit Your Story</a>
+
+            <h2 class="stories-section-title">HSP Stories</h2>
+            <div class="blog-grid">
+                <!-- Incoming Story Card 1 -->
+                <div class="blog-card">
+                    <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=600&q=80" alt="Incoming Story" class="blog-img">
+                    <div class="blog-card-content">
+                        <div class="blog-author-row">
+                            <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=100&q=80" alt="Author Icon">
+                            <span class="blog-author-name">HSP Team</span>
+                        </div>
+                        <h3 class="blog-title">Incoming Story</h3>
+                        <p class="blog-excerpt">We are currently collecting stories from our community. Check back soon to read experiences and insights from those impacted by housing insecurity and our programs.</p>
+                    </div>
+                </div>
+                <!-- Incoming Story Card 2 -->
+                <div class="blog-card">
+                    <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=600&q=80" alt="Incoming Story" class="blog-img">
+                    <div class="blog-card-content">
+                        <div class="blog-author-row">
+                            <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=100&q=80" alt="Author Icon">
+                            <span class="blog-author-name">HSP Team</span>
+                        </div>
+                        <h3 class="blog-title">Incoming Story</h3>
+                        <p class="blog-excerpt">We are currently collecting stories from our community. Check back soon to read experiences and insights from those impacted by housing insecurity and our programs.</p>
+                    </div>
+                </div>
+                <!-- Incoming Story Card 3 -->
+                <div class="blog-card">
+                    <img src="https://images.unsplash.com/photo-1511632765486-a01980e01a18?auto=format&fit=crop&w=600&q=80" alt="Incoming Story" class="blog-img">
+                    <div class="blog-card-content">
+                        <div class="blog-author-row">
+                            <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=100&q=80" alt="Author Icon">
+                            <span class="blog-author-name">HSP Team</span>
+                        </div>
+                        <h3 class="blog-title">Incoming Story</h3>
+                        <p class="blog-excerpt">We are currently collecting stories from our community. Check back soon to read experiences and insights from those impacted by housing insecurity and our programs.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- NEW CONTACT PAGE -->
+    <div id="page-contact" class="page-section">
+        <div class="page-header">
+            <h1>Contact Us</h1>
+            <p>Reach out to the Housing Security Project.</p>
+        </div>
+        <div class="container">
+            <div class="content-card" style="max-width: 700px; margin: 0 auto;">
+                <h2 style="text-align: center; margin-bottom: 30px;">Get In Touch</h2>
+                <form class="story-form" onsubmit="event.preventDefault(); alert('Thank you! Your message has been sent securely.');">
+                    <input type="text" placeholder="Name" required>
+                    <input type="email" placeholder="Email Address" required>
+                    <input type="text" placeholder="Subject" required>
+                    <textarea rows="6" placeholder="Your Message..." required></textarea>
+                    <button type="submit" class="pill-btn pill-btn-alt" style="width: 100%; margin-top: 10px;">Send Message &gt;</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Housing Security Project. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function switchPage(pageId) {
+            // Hide all pages
+            document.querySelectorAll('.page-section').forEach(section => {
+                section.classList.remove('active');
+            });
+
+            // Remove active class from all nav links
+            document.querySelectorAll('nav a').forEach(link => {
+                link.classList.remove('active');
+            });
+
+            // Show selected page
+            document.getElementById('page-' + pageId).classList.add('active');
+            
+            // Highlight active nav link (handle dropdown links logic)
+            const activeLink = document.getElementById('link-' + pageId);
+            if (activeLink) {
+                activeLink.classList.add('active');
+                
+                // If it's a dropdown item, also highlight the parent "Get Involved"
+                if (['chapters', 'volunteer'].includes(pageId)) {
+                    document.getElementById('link-involved').classList.add('active');
+                }
+            }
+
+            // Scroll back to the top of the window
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function scrollToNextSection() {
+            // Find the stats section
+            const nextSection = document.getElementById('stats-section');
+            // Get the sticky header height so it doesn't overlap the content
+            const headerHeight = document.querySelector('header').offsetHeight;
+            
+            if (nextSection) {
+                const elementPosition = nextSection.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.pageYOffset - headerHeight;
+
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
+                });
+            }
+        }
+
+        // Automatic Slideshow Logic
+        setInterval(() => {
+            const slides = document.querySelectorAll('.hero-slide');
+            let activeIndex = -1;
+            slides.forEach((slide, index) => {
+                if(slide.classList.contains('active')) activeIndex = index;
+                slide.classList.remove('active');
+            });
+            if (slides.length > 0) {
+                const nextIndex = (activeIndex + 1) % slides.length;
+                slides[nextIndex].classList.add('active');
+            }
+        }, 5000); // Rotates every 5 seconds
+    </script>
+</body>
+</html>
