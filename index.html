@@ -357,16 +357,9 @@
             margin-bottom: 10px;
         }
         .chart-icon {
-            width: 120px;
+            width: 100px;
             height: 80px;
             fill: var(--main-light);
-        }
-        .chart-arrow {
-            stroke: var(--accent-color);
-            stroke-width: 5;
-            fill: none;
-            stroke-linecap: round;
-            stroke-linejoin: round;
         }
         .stat-right-header {
             display: flex;
@@ -970,7 +963,7 @@
         
         footer {
             text-align: center;
-            padding: 30px;
+            padding: 40px 30px;
             background-color: var(--main-dark);
             color: white;
         }
@@ -1100,8 +1093,8 @@
                         <span>S</span>ecurity<br>
                         <span>P</span>roject
                     </h1>
-                    <p class="hero-mission">Revolutionizing the culture of financial preparedness to build stronger communities and prevent housing insecurity.<!--[cite: 1]--></p>
-                    <p class="hero-quote">"Prepare before the crisis."<!--[cite: 1]--></p>
+                    <p class="hero-mission">Revolutionizing the culture of financial preparedness to build stronger communities and prevent housing insecurity.</p>
+                    <p class="hero-quote">"Prepare before the crisis."</p>
                     <button class="pill-btn" onclick="scrollToNextSection()">Learn More &gt;</button>
                 </div>
             </div>
@@ -1110,7 +1103,7 @@
         <!-- The Problem Section -->
         <section class="problem-section" id="stats-section">
             <h2 class="section-title">The Problem</h2>
-            <p class="problem-intro">Housing insecurity affects millions of people across the United States, but it is often treated as a problem that begins only when someone loses their home. In reality, housing insecurity can begin much earlier, when families struggle to afford rent, fall behind on payments, or have little financial room to handle an unexpected expense. Today, too many people are left without the financial security, knowledge, resources, and support needed to remain securely housed.<!--[cite: 1]--></p>
+            <p class="problem-intro">Housing insecurity affects millions of people across the United States, but it is often treated as a problem that begins only when someone loses their home. In reality, housing insecurity can begin much earlier, when families struggle to afford rent, fall behind on payments, or have little financial room to handle an unexpected expense. Today, too many people are left without the financial security, knowledge, resources, and support needed to remain securely housed.</p>
             
             <div class="problem-grid">
                 
@@ -1132,37 +1125,44 @@
                         </div>
                     </div>
                     <div class="problem-big-text">8 in 10</div>
-                    <div class="problem-desc">participants said their eviction filing limited their future housing options.<!--[cite: 1]--></div>
+                    <div class="problem-desc">participants said their eviction filing limited their future housing options.</div>
                 </div>
     
-                <!-- 745,652 Column -->
+                <!-- 745,652 Column (Updated Graphic) -->
                 <div class="problem-column">
                     <div class="problem-graphic">
-                        <svg viewBox="0 0 100 80" class="chart-icon">
-                            <rect x="10" y="50" width="12" height="30" />
-                            <rect x="25" y="40" width="12" height="40" />
-                            <rect x="40" y="60" width="12" height="20" />
-                            <rect x="55" y="30" width="12" height="50" />
-                            <rect x="70" y="10" width="12" height="70" />
-                            <path d="M 5 50 L 30 30 L 45 45 L 85 5" class="chart-arrow" />
-                            <polygon points="85,5 75,5 85,15" fill="var(--accent-color)" />
+                        <svg viewBox="0 0 24 24" class="chart-icon" style="width: 100px; height: 80px;" fill="var(--main-light)">
+                            <!-- Small shelter/house -->
+                            <path d="M10 19v-5h4v5h3v-7h2L12 5.5 5 12h2v7h3z" />
+                            <!-- Person 1 -->
+                            <circle cx="19" cy="9" r="1.5" fill="var(--accent-color)"/>
+                            <path d="M19 11c-1.33 0-4 .67-4 2v3h1.5v4h5v-4H23v-3c0-1.33-2.67-2-4-2z" fill="var(--accent-color)"/>
+                            <!-- Person 2 -->
+                            <circle cx="4" cy="11" r="1.5" fill="var(--accent-color)"/>
+                            <path d="M4 13c-1.33 0-4 .67-4 2v2h1.5v3h5v-3H8v-2c0-1.33-2.67-2-4-2z" fill="var(--accent-color)"/>
                         </svg>
                     </div>
-                    <div class="problem-desc" style="margin-bottom: 5px;">People experiencing homelessness on a single night in 2025 reached<!--[cite: 1]--></div>
+                    <div class="problem-desc" style="margin-bottom: 5px;">People experiencing homelessness on a single night in 2025 reached</div>
                     <div class="problem-big-text">745,652</div>
                 </div>
     
-                <!-- 12.1M Column -->
+                <!-- 12.1M Column (Updated Graphic) -->
                 <div class="problem-column">
                     <div class="stat-right-header">
                         <div class="problem-big-text">12.1M</div>
-                        <div style="display:flex; gap: 5px; margin-top: 5px;">
-                            <svg width="28" height="28" viewBox="0 0 24 24" fill="var(--main-light)"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
-                            <svg width="28" height="28" viewBox="0 0 24 24" fill="var(--main-light)"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
-                            <svg width="28" height="28" viewBox="0 0 24 24" fill="var(--accent-color)"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+                        <div style="display:flex; gap: 8px; margin-top: 5px; align-items: center; justify-content: center;">
+                            <svg width="35" height="35" viewBox="0 0 24 24" fill="var(--main-light)">
+                                <path d="M12 3L2 12h3v8h14v-8h3L12 3zm0 2.7l5 4.5V18H7v-7.8l5-4.5z"/>
+                            </svg>
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="var(--accent-color)">
+                                <!-- Pie chart full outline -->
+                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z" fill="var(--main-light)"/>
+                                <!-- Pie chart half filled -->
+                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10v-20z" fill="var(--accent-color)"/>
+                            </svg>
                         </div>
                     </div>
-                    <div class="problem-desc" style="margin-top: 10px;">Households spent more than half of their income on housing, leaving little financial room for the unexpected.<!--[cite: 1]--></div>
+                    <div class="problem-desc" style="margin-top: 10px;">Households spent more than half of their income on housing, leaving little financial room for the unexpected.</div>
                 </div>
             </div>
         </section>
@@ -1177,7 +1177,7 @@
             <div class="who-we-are-container">
                 <div class="who-we-are-text">
                     <h2>Who We Are</h2>
-                    <p>The Housing Security Project is a youth-led organization working to revolutionize the culture of financial preparedness and prevent housing insecurity in communities. Through financial education, community initiatives, volunteer projects, and advocacy, we encourage healthy financial habits, strengthen support systems, and help create communities where people are better prepared for financial hardship before it becomes a housing crisis.<!--[cite: 1]--></p>
+                    <p>The Housing Security Project is a youth-led organization working to revolutionize the culture of financial preparedness and prevent housing insecurity in communities. Through financial education, community initiatives, volunteer projects, and advocacy, we encourage healthy financial habits, strengthen support systems, and help create communities where people are better prepared for financial hardship before it becomes a housing crisis.</p>
                     <button class="pill-btn" onclick="switchPage('about')">About Us &gt;</button>
                 </div>
                 <div class="who-we-are-image">
@@ -1197,15 +1197,15 @@
             <div class="approach-stack">
                 <div class="approach-banner">
                     <h3>01. Build Knowledge</h3>
-                    <p>Through financial literacy programs, educational resources, workshops, and community outreach, we teach young people practical skills in saving, budgeting, spending, credit, debt, emergency planning, and housing. We encourage healthy financial habits that help people prepare for unexpected hardship before it becomes a crisis.<!--[cite: 1]--></p>
+                    <p>Through financial literacy programs, educational resources, workshops, and community outreach, we teach young people practical skills in saving, budgeting, spending, credit, debt, emergency planning, and housing. We encourage healthy financial habits that help people prepare for unexpected hardship before it becomes a crisis.</p>
                 </div>
                 <div class="approach-banner">
                     <h3>02. Build Connection</h3>
-                    <p>Through public education, personal stories, community conversations, and awareness initiatives, we encourage people to view saving, planning ahead, and preparing for unexpected hardship as habits worth building rather than actions taken only when a crisis occurs.<!--[cite: 1]--></p>
+                    <p>Through public education, personal stories, community conversations, and awareness initiatives, we encourage people to view saving, planning ahead, and preparing for unexpected hardship as habits worth building rather than actions taken only when a crisis occurs.</p>
                 </div>
                 <div class="approach-banner">
                     <h3>03. Build Action</h3>
-                    <p>Through chapters, volunteer projects, and advocacy, we spread HSP's mission to students and communities, supporting local initiatives and working to develop and pass policies that strengthen housing and financial security.<!--[cite: 1]--></p>
+                    <p>Through chapters, volunteer projects, and advocacy, we spread HSP's mission to students and communities, supporting local initiatives and working to develop and pass policies that strengthen housing and financial security.</p>
                 </div>
             </div>
             <button class="pill-btn" style="margin-top: 40px;" onclick="switchPage('involved')">View Our Programs &gt;</button>
@@ -1244,7 +1244,7 @@
     <div id="page-about" class="page-section">
         <div class="page-header">
             <h1>About Us</h1>
-            <p>Empowering young people and communities to revolutionize financial preparedness.<!--[cite: 1]--></p>
+            <p>Empowering young people and communities to revolutionize financial preparedness.</p>
         </div>
         
         <div class="zigzag-container">
@@ -1252,7 +1252,7 @@
             <div class="zigzag-row">
                 <div class="zigzag-text">
                     <h2>Our Vision</h2>
-                    <p>A future where financial preparedness is part of everyday life, where people are encouraged to save, plan ahead, and build the financial security needed to withstand unexpected hardship. We want to help create a culture of self-reliance where people are better prepared before a financial crisis becomes a housing crisis, while ensuring that those facing circumstances beyond their control have support when they need it.<!--[cite: 1]--></p>
+                    <p>A future where financial preparedness is part of everyday life, where people are encouraged to save, plan ahead, and build the financial security needed to withstand unexpected hardship. We want to help create a culture of self-reliance where people are better prepared before a financial crisis becomes a housing crisis, while ensuring that those facing circumstances beyond their control have support when they need it.</p>
                 </div>
                 <div class="zigzag-image">
                     <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=800&q=80" alt="Students collaborating confidently">
@@ -1263,7 +1263,7 @@
             <div class="zigzag-row">
                 <div class="zigzag-text">
                     <h2>Our Mission</h2>
-                    <p>Empowering young people and communities to revolutionize the culture of financial preparedness by building financial security, developing healthy saving habits, and creating support systems that prevent housing insecurity, so no individual or family faces them alone.<!--[cite: 1]--></p>
+                    <p>Empowering young people and communities to revolutionize the culture of financial preparedness by building financial security, developing healthy saving habits, and creating support systems that prevent housing insecurity, so no individual or family faces them alone.</p>
                 </div>
                 <div class="zigzag-image">
                     <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=800&q=80" alt="Diverse youth community working together">
@@ -1274,8 +1274,8 @@
             <div class="zigzag-row">
                 <div class="zigzag-text">
                     <h2>What We Believe</h2>
-                    <p>We believe housing security starts before a crisis. Building healthy spending and saving habits, preparing for unexpected expenses, and understanding how to manage money can help people remain financially stable when hardships occur.<!--[cite: 1]--></p>
-                    <p style="margin-top: 15px;">We want to help create a culture where saving and financial preparedness are part of everyday life, not something people think about only after a crisis begins. At the same time, we believe strong community and public support systems are essential for people facing circumstances beyond their control.<!--[cite: 1]--></p>
+                    <p>We believe housing security starts before a crisis. Building healthy spending and saving habits, preparing for unexpected expenses, and understanding how to manage money can help people remain financially stable when hardships occur.</p>
+                    <p style="margin-top: 15px;">We want to help create a culture where saving and financial preparedness are part of everyday life, not something people think about only after a crisis begins. At the same time, we believe strong community and public support systems are essential for people facing circumstances beyond their control.</p>
                 </div>
                 <div class="zigzag-image">
                     <img src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=800&q=80" alt="Financial planning and saving">
@@ -1299,14 +1299,14 @@
     <div id="page-involved" class="page-section">
         <div class="page-header">
             <h1>Get Involved</h1>
-            <p>Join the movement to prevent housing insecurity.<!--[cite: 1]--></p>
+            <p>Join the movement to prevent housing insecurity.</p>
         </div>
         
         <div class="why-involved-container">
             <div class="why-involved-text">
                 <h2>Why Get Involved?</h2>
-                <p>We believe everyone should have an opportunity to contribute to the fight against housing insecurity. Young people have an important role to play in understanding housing insecurity and creating change in their communities.<!--[cite: 1]--></p>
-                <p>Through our programs, HSP members work directly on the policy process from start to finish—drafting legislation, gathering community perspectives, and advocating for proposals to turn student-developed ideas into real policy change.<!--[cite: 1]--></p>
+                <p>We believe everyone should have an opportunity to contribute to the fight against housing insecurity. Young people have an important role to play in understanding housing insecurity and creating change in their communities.</p>
+                <p>Through our programs, HSP members work directly on the HSP mission: financial education, the policy process from start to finish, drafting legislation, gathering community perspectives, and advocating for proposals to turn student-developed ideas into real policy change.</p>
             </div>
             <div class="why-involved-approaches">
                 <h3>Our Approach</h3>
@@ -1326,12 +1326,12 @@
         <div class="programs-outline-container">
             <div class="program-card-outline chapter-card">
                 <h3>Chapter Program</h3>
-                <p>Start or join a chapter in your school or community to lead educational programs, service projects, and advocacy initiatives!<!--[cite: 1]--></p>
+                <p>Start or join a chapter in your school or community to lead educational programs, service projects, and advocacy initiatives!</p>
                 <button class="pill-btn btn-chapter" onclick="switchPage('chapters')">Learn More</button>
             </div>
             <div class="program-card-outline volunteer-card">
                 <h3>Volunteer Program</h3>
-                <p>Assist us in supporting the fight against housing insecurity through education, research, community service, and outreach!<!--[cite: 1]--></p>
+                <p>Assist us in supporting the fight against housing insecurity through education, research, community service, and outreach!</p>
                 <button class="pill-btn btn-volunteer" onclick="switchPage('volunteer')">Volunteer With Us</button>
             </div>
         </div>
@@ -1349,7 +1349,7 @@
     <div id="page-chapters" class="page-section">
         <div class="page-header">
             <h1>Chapters</h1>
-            <p>Bring the Housing Security Project to your school or community.<!--[cite: 1]--></p>
+            <p>Bring the Housing Security Project to your school or community.</p>
         </div>
         
         <div class="chapters-grid">
@@ -1361,20 +1361,20 @@
             <!-- Quadrant 2: What is an HSP Chapter -->
             <div class="chapters-grid-item">
                 <h2 style="color: var(--main-color);">What is an HSP Chapter?</h2>
-                <p>We believe young people have an important role to play in understanding housing insecurity and creating change in their communities.<!--[cite: 1]--></p>
-                <p>Through our chapter program, we support young people as they lead projects focused on financial education, housing awareness, community support, and advocacy. Our chapters bring HSP's mission into their own communities through educational programs, fundraisers, service projects, and other local initiatives.<!--[cite: 1]--></p>
+                <p>We believe young people have an important role to play in understanding housing insecurity and creating change in their communities.</p>
+                <p>Through our chapter program, we support young people as they lead projects focused on financial education, housing awareness, community support, and advocacy. Our chapters bring HSP's mission into their own communities through educational programs, fundraisers, service projects, and other local initiatives.</p>
             </div>
             
             <!-- Quadrant 3: What Chapters Do -->
             <div class="chapters-grid-item">
-                <h2 style="color: var(--main-color);">Chapter leaders will do:</h2>
+                <h2 style="color: var(--main-color);">Chapter leaders will:</h2>
                 <ul>
-                    <li>Draft legislation and policy proposals<!--[cite: 1]--></li>
-                    <li>Conduct extensive policy research<!--[cite: 1]--></li>
-                    <li>Gather community perspectives and stories<!--[cite: 1]--></li>
-                    <li>Prepare supporting materials for local governments<!--[cite: 1]--></li>
-                    <li>Connect with policymakers and community organizations<!--[cite: 1]--></li>
-                    <li>Advocate fiercely for our proposals<!--[cite: 1]--></li>
+                    <li>Receive a chapter toolkit<!--[cite: 1]--></li>
+                    <li>Gain access to the global HSP community<!--[cite: 1]--></li>
+                    <li>Collaborate on policy proposals and advocacy campaigns<!--[cite: 1]--></li>
+                    <li>Gain access to financial educational resources<!--[cite: 1]--></li>
+                    <li>Participate in national HSP initiatives and projects<!--[cite: 1]--></li>
+                    <li>Receive mentorship and support from the HSP team<!--[cite: 1]--></li>
                 </ul>
             </div>
             
@@ -1383,8 +1383,8 @@
                 <h2 style="color: var(--accent-color);">Ready to start a chapter?</h2>
                 <p>Before applying to become a Chapter Leader, check out our guide and ensure you are ready to bring the mission of the Housing Security Project to your community!</p>
                 <div class="chapters-btn-group">
-                    <a href="YOUR_GOOGLE_FORM_LINK_HERE" target="_blank" class="pill-btn pill-btn-alt">Start a Chapter</a>
-                    <a href="YOUR_GOOGLE_FORM_LINK_HERE" target="_blank" class="pill-btn">Chapter Guide</a>
+                    <a href="https://forms.gle/DmGWkUbJVcGpHcH16" target="_blank" class="pill-btn pill-btn-alt">Start a Chapter</a>
+                    <a href="https://canva.link/3kr9npn1xe2ec40" target="_blank" class="pill-btn">Chapter Guide</a>
                 </div>
             </div>
         </div>
@@ -1399,21 +1399,21 @@
     <div id="page-volunteer" class="page-section">
         <div class="page-header">
             <h1>Volunteer</h1>
-            <p>Contribute your skills to support our mission.<!--[cite: 1]--></p>
+            <p>Contribute your skills to support our mission.</p>
         </div>
         
         <div class="volunteer-simple-container">
             <h2 class="ways-title">Ways to Volunteer</h2>
-            <p>We believe everyone should have an opportunity to contribute to the fight against housing insecurity.<!--[cite: 1]--></p>
-            <p>Through our volunteer program, we connect young people with opportunities to support The Housing Security Project through education, research, community service, fundraising, outreach, and advocacy.<!--[cite: 1]--></p>
+            <p>We believe everyone should have an opportunity to contribute to the fight against housing insecurity.</p>
+            <p>Through our volunteer program, we connect young people with opportunities to support The Housing Security Project through education, research, community service, fundraising, outreach, and advocacy.</p>
             
             <p style="margin-top: 30px; font-weight: 600; font-size: 20px;">The main ways to volunteer with HSP are:</p>
             <ol>
                 <li>Start or join an existing chapter</li>
-                <li>Apply to be on the HSP team!</li>
+                <li>Apply to be on the HSP team</li>
             </ol>
 
-            <a href="YOUR_GOOGLE_FORM_LINK_HERE" target="_blank" class="pill-btn pill-btn-alt">Volunteer Application</a>
+            <a href="https://forms.gle/oTCuv3ieX15yfP939" target="_blank" class="pill-btn pill-btn-alt">Volunteer Application</a>
         </div>
 
         <div class="volunteer-hours">
@@ -1426,16 +1426,16 @@
     <div id="page-story" class="page-section">
         <div class="page-header">
             <h1>Share Your Story</h1>
-            <p>Every story deserves to be heard.<!--[cite: 1]--></p>
+            <p>Every story deserves to be heard.</p>
         </div>
         
         <div class="story-page-container">
             <div class="story-large-quote">
-                "By sharing these stories, we work to reduce stigma, build understanding, and remind communities that housing insecurity can affect anyone."<!--[cite: 1]-->
+                "By sharing these stories, we work to reduce stigma, build understanding, and remind communities that housing insecurity can affect anyone."
             </div>
-            <p class="story-desc">We believe that behind every experience with housing insecurity is a person and a story that deserves to be heard. Through HSP, we invite individuals and families affected by housing insecurity, eviction, or financial hardship to share their experiences and help others better understand the realities behind these issues.<!--[cite: 1]--></p>
+            <p class="story-desc">We believe that behind every experience with housing insecurity is a person and a story that deserves to be heard. Through HSP, we invite individuals and families affected by housing insecurity, eviction, or financial hardship to share their experiences and help others better understand the realities behind these issues.</p>
             
-            <p class="story-privacy">We respect the privacy of everyone who shares their story with us. Stories may be shared anonymously, and we will not publicly identify or share personal information without permission.<!--[cite: 1]--></p>
+            <p class="story-privacy">We respect the privacy of everyone who shares their story with us. Stories may be shared anonymously, and we will not publicly identify or share personal information without permission.</p>
 
             <a href="YOUR_GOOGLE_FORM_LINK_HERE" target="_blank" class="pill-btn pill-btn-alt" style="margin-bottom: 60px; font-size: 18px; padding: 15px 40px;">Submit Your Story</a>
 
@@ -1481,7 +1481,7 @@
         </div>
     </div>
 
-    <!-- NEW CONTACT PAGE -->
+<!-- NEW CONTACT PAGE -->
     <div id="page-contact" class="page-section">
         <div class="page-header">
             <h1>Contact Us</h1>
@@ -1490,11 +1490,18 @@
         <div class="container">
             <div class="content-card" style="max-width: 700px; margin: 0 auto;">
                 <h2 style="text-align: center; margin-bottom: 30px;">Get In Touch</h2>
-                <form class="story-form" onsubmit="event.preventDefault(); alert('Thank you! Your message has been sent securely.');">
-                    <input type="text" placeholder="Name" required>
-                    <input type="email" placeholder="Email Address" required>
-                    <input type="text" placeholder="Subject" required>
-                    <textarea rows="6" placeholder="Your Message..." required></textarea>
+                <!-- Using FormSubmit to allow standard HTML forms to function without a backend -->
+                <form class="story-form" action="https://formsubmit.co/hsporgconnect@gmail.com" method="POST">
+                    <!-- Invisible field to set the email subject line -->
+                    <input type="hidden" name="_subject" value="New message from HSP Website">
+                    <!-- Disables the Captcha challenge screen to make the site feel more professional -->
+                    <input type="hidden" name="_captcha" value="false">
+                    
+                    <input type="text" name="name" placeholder="Name (required)" required>
+                    <input type="email" name="email" placeholder="Email Address (required)" required>
+                    <input type="text" name="subject" placeholder="Subject (required)" required>
+                    <textarea name="message" rows="6" placeholder="Your Message... (required)" required></textarea>
+                    
                     <button type="submit" class="pill-btn pill-btn-alt" style="width: 100%; margin-top: 10px;">Send Message &gt;</button>
                 </form>
             </div>
@@ -1502,7 +1509,15 @@
     </div>
 
     <footer>
-        <p>&copy; 2026 Housing Security Project. All rights reserved.</p>
+        <div class="footer-content" style="max-width: 1000px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; gap: 15px;">
+            <h3 style="font-family: var(--font-display); font-size: 24px; color: var(--accent-color); margin-bottom: 5px;">Housing Security Project</h3>
+            <a href="mailto:hsporgconnect@gmail.com" style="color: white; text-decoration: none; font-size: 16px; display: flex; align-items: center; gap: 8px;">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                hsporgconnect@gmail.com
+            </a>
+            <div style="width: 100%; max-width: 400px; height: 1px; background: rgba(255,255,255,0.1); margin: 15px 0;"></div>
+            <p style="font-size: 14px; opacity: 0.8;">&copy; 2026 Housing Security Project. All rights reserved.</p>
+        </div>
     </footer>
 
     <script>
